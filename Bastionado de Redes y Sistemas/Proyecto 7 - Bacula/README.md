@@ -9,21 +9,20 @@ Bastionado de Redes y Sistemas
 ---
 # Índice
 
-- [[#Introducción]]
-- [[#Requisitos]]
-- [[#Instalación]]
-	- [[#Instalación servidor]]
-	- [[#Preinstalación]]
-	- [[#Instalación Bacula]]
-	- [[#Instalación Baculum]]
-		- [[#Baculum Web]]
-		- [[#Baculum API]]
-	- [[#Instalación clientes]]
-		- [[#Instalación Ubuntu]]
-		- [[#Instalación Windows]]
-- [[#Estrategia de copias de seguridad]]
-- [[#Configuración copias de seguridad]]
-
+- [Introducción](#introducción)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+  - [Instalación del servidor](#instalación-del-servidor)
+  - [Preinstalación](#preinstalación)
+  - [Instalación de Bacula](#instalación-de-bacula)
+  - [Instalación de Baculum](#instalación-de-baculum)
+    - [Baculum Web](#baculum-web)
+    - [Baculum API](#baculum-api)
+  - [Instalación de clientes](#instalación-de-clientes)
+    - [Instalación en Ubuntu](#instalación-en-ubuntu)
+    - [Instalación en Windows](#instalación-en-windows)
+- [Estrategia de copias de seguridad](#estrategia-de-copias-de-seguridad)
+- [Configuración de copias de seguridad](#configuración-de-copias-de-seguridad)
 
 # Introducción
 
