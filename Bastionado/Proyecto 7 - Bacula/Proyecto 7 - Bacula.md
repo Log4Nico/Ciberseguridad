@@ -335,38 +335,31 @@ sudo systemctl restart bacula-sd
 
 Comprobamos que el puerto 9102 del cliente está en escucha:
 
-![[Pasted image 20250218212911.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218212911.png.png)
 
 Y comprobamos la conexión desde el servidor.
 
-![[Pasted image 20250218213106.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218213106.png)
 
-![[Pasted image 20250218213328.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218213328.png)
 
 Ya tendríamos Bacula Cliente instalado en un Ubuntu Desktop 20.04.
 ### Instalación Windows
 
 Instalar Bacula en Windows es más sencillo, nos descargaremos el archivo.exe del siguiente [repositorio](https://www.bacula.org/downloads/Bacula-9.6.7/)
 
-![[Pasted image 20250218213943.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218213943.png)
 > Falso positivo(espero)
 
-![[Pasted image 20250218214027.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218214027.png)
 
 Procedemos con la instalación. Le damos a siguiente y aceptamos los términos. Le damos a instalación personalizada y en tipo de instalación ponemos Cliente.
 
-![[Pasted image 20250218215029.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218215029.png)
 
 La contraseña nos la podemos inventar, ya que no está configurada en ningún lado(aún)
 
-![[Pasted image 20250218215318.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218215318.png)
 
 Aquí ponemos la información del servidor:
 
@@ -375,14 +368,12 @@ Aquí ponemos la información del servidor:
 - DIR Address: 192.168.1.80
 - DIR: 9101
 
-![[Pasted image 20250218215637.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218215637.png)
 
 Le damos a siguiente, y ya estaría instalado el cliente en Windows 11.
 En el servidor, tenemos que añadir al cliente:
 
-![[Pasted image 20250219103340.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250219103340.png)
 
 Reiniciamos los servicios del servidor:
 
@@ -392,8 +383,7 @@ sudo systemctl restart bacula-fd.service
 sudo systemctl restart bacula-sd.service
 ```
 
-![[Pasted image 20250218215902.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218215902.png)
 
 Y ya tendríamos instalado los 3 clientes y conectados al servidor.
 
