@@ -1,5 +1,6 @@
+# Bacula
 
-![[Pasted image 20250218153918.png]]
+![](Pasted%20image%2020250218153918.png)
 
 Nicolás Ruiz Ruiz
 Bastionado de Redes y Sistemas
