@@ -1,6 +1,6 @@
 # Proyecto 7 - Bacula
 
-![[Pasted image 20250218153918.png]]
+![](attachments/Pasted%20image%2020250218153918.png)
 
 Nicolás Ruiz Ruiz
 Bastionado de Redes y Sistemas
@@ -90,6 +90,7 @@ La instalación nos hará 2 preguntas:
 
 **Configuración del correo(Postfix)**
 ![[Pasted image 20250218162125.png]]
+![](attachments/Pasted%20image%2020250218162125.png)
 
 Podemos elegir **sin configuración**, para no configurar ningún correo, **sitio de internet**, si quisiéramos poner un **correo personal** o correo local si tuviéramos un servidor SMTP
 
