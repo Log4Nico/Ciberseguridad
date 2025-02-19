@@ -95,8 +95,7 @@ La instalación nos hará 2 preguntas:
 Podemos elegir **sin configuración**, para no configurar ningún correo, **sitio de internet**, si quisiéramos poner un **correo personal** o correo local si tuviéramos un servidor SMTP
 
 **Configuración de la base de datos**
-![[Pasted image 20250218164541.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218164541.png)
 
 Obviamente le decimos que sí para que configure automáticamente la base de datos.
 
@@ -107,8 +106,7 @@ Veamos si los servicios están activos.
 sudo systemctl status bacula-director.service bacula-sd.service bacula-fd.service
 ```
 
-![[Pasted image 20250218171239.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/![[Pasted%20image%2020250218171239.png]].png)
 >Hago el grep para que se vean los 3 en la misma pantalla.
 
 Creemos ahora el usuario bacula en la base de datos. Para ello pondremos los siguientes comandos:
@@ -130,8 +128,7 @@ Ahora que la base de datos está configurada, toca configurar el *Bacula Directo
 sudo nano /etc/bacula/bacula-dir.conf
 ```
 
-![[Pasted image 20250218171733.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218171733.png)
 > Estos son mis datos, lo único que no tendríamos en común es el dbuser, y la dbpassword.
 
 ```bash
@@ -141,8 +138,7 @@ sudo systemctl status bacula-director
 
 Ya tendríamos **Bacula** instalado en nuestro servidor, podríamos probar si la configuración es correcta con:
 
-![[Pasted image 20250218172143.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218172143.png)
 
 Si aparecen errores, o no podemos iniciar *bconsole* ejecute el siguiente comando y verifique que error tienes.
 
@@ -176,8 +172,7 @@ deb-src http://www.bacula.org/downloads/baculum/stable-11/ubuntu focal main
 
 Para saber la versión de **Bacula Director**, ejecutar el siguiente comando:
 
-![[Pasted image 20250218175109.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218175109.png)
 
 Actualizamos los paquetes.
 
@@ -204,8 +199,7 @@ a2ensite baculum-api
 a2ensite baculum-web
 ```
 
-![[Pasted image 20250218191036.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218191036.png)
 
 Por último reiniciamos apache y vemos si está activo.
 
@@ -217,15 +211,13 @@ systemctl status apache2
 Ahora podremos acceder a los puertos 9095(web) y 9096(api) del servidor. Vamos a configurar ambas servicios.
 ### Baculum Web
 
-![[Pasted image 20250218184543.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218184543.png)
 > http://{ip_servidor}:9095/web/
 > admin/admin
 
 Puede pasar que al autenticarnos, la página nos devuelva un error, si es el caso, debemos modificar los permisos de la siguiente carpeta:
 
-![[Pasted image 20250218192446.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218192446.png)
 > No pude replicar el error y lo busque en internet, por eso la calidad
 
 ```bash
@@ -238,45 +230,37 @@ De esta forma ya quedaría solucionado el problema.
 
 Entremos ahora en la configuración del **Baculum**
 
-![[Pasted image 20250218192709.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218192709.png)
 
 Elegimos el idioma que más queramos y le damos a siguiente, en esta sección deberemos configurar la conexión con la API, si lo has hecho igual que yo, el login será bacula/bacula:
 
-![[Pasted image 20250218193700.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218193700.png)
 
 Si nos sale algún error, debemos configurar la API antes. Como se ve en la imagen, pasamos correctamente los test, le damos a siguiente y guardamos la configuración
 ### Baculum API
 
 Pasemos ahora a la configuración de la AIP de Baculum.
 
-![[Pasted image 20250218193811.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218193811.png)
 > http://{ip_servidor}:9096/panel/
 
 Aquí podremos configurar un nuevo usuario para la API(muy recomendado)
 
-![[Pasted image 20250218194010.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218194010.png)
 > Si cambiamos aquí, tendremos que cambiar la configuración de la web
 
-![[Pasted image 20250218194058.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218194058.png)
 
 Empecemos con la configuración eligiendo un idioma y le damos a siguiente. La primera configuración, será sobre la base de datos que creamos antes:
 
-![[Pasted image 20250218194817.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218194817.png)
 
 Si se ha seguido la documentación al pie de la letra, esto bastará para pasar el test, si no es el caso, rellenar con tus datos. Configuración de la interfaz de comandos:
 
-![[Pasted image 20250218195347.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218195347.png)
 > Si da fallos, revisar que los permisos sean los correctos.
 
-![[Pasted image 20250218195506.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218195506.png)
 
 Si no son así, poner los siguientes comandos:
 
@@ -290,8 +274,7 @@ sudo systemctl restart apache2
 
 Ya no debería darnos error en el test. Tercera configuración, interfaz del Bacula.
 
-![[Pasted image 20250218200059.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218200059.png)
 
 Estos van a dar error 100%, ya que no existen esos archivo, bueno, si que existen, pero no están en esa carpeta. Vamos a crear un enlace simbólico a esos archivos de la siguiente forma:
 
@@ -308,8 +291,7 @@ sudo systemctl restart apache2
 Ahora si que sí, podremos pasar los test a la perfección. Si bconsole da error
 Si lo anterior no da fallo, esto tampoco debería:
 
-![[Pasted image 20250218204050.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218204050.png)
 
 Dejamos la autenticación básica y terminamos la instalación de Bacula y Baculum en el servidor.
 ## Instalación clientes
@@ -326,8 +308,7 @@ sudo apt install bacula-client -y
 
 Debemos editar el archivo /etc/bacula/bacula-fd.conf y poner lo siguiente:
 
-![[Pasted image 20250218210953.png]]
-![](attachments/Pasted%20image%2020250218162125.png)
+![](attachments/Pasted%20image%2020250218210953.png)
 
 Los datos del servidor los podemos encontrar en su archivo con el mismo nombre. En **Director**, ponemos el nombre y contraseña del servidor:
 
