@@ -1,3 +1,4 @@
+# Proyecto 7 - Bacula
 
 ![[Pasted image 20250218153918.png]]
 
@@ -8,21 +9,20 @@ Bastionado de Redes y Sistemas
 ---
 # Índice
 
-- [[#Introducción]]
-- [[#Requisitos]]
-- [[#Instalación]]
-	- [[#Instalación servidor]]
-	- [[#Preinstalación]]
-	- [[#Instalación Bacula]]
-	- [[#Instalación Baculum]]
-		- [[#Baculum Web]]
-		- [[#Baculum API]]
-	- [[#Instalación clientes]]
-		- [[#Instalación Ubuntu]]
-		- [[#Instalación Windows]]
-- [[#Estrategia de copias de seguridad]]
-- [[#Configuración copias de seguridad]]
-
+- [Introducción](#introducción)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+  - [Instalación servidor](#instalación-servidor)
+  - [Preinstalación](#preinstalación)
+  - [Instalación Bacula](#instalación-bacula)
+  - [Instalación Baculum](#instalación-baculum)
+    - [Baculum Web](#baculum-web)
+    - [Baculum API](#baculum-api)
+  - [Instalación clientes](#instalación-clientes)
+    - [Instalación Ubuntu](#instalación-ubuntu)
+    - [Instalación Windows](#instalación-windows)
+- [Estrategia de copias de seguridad](#estrategia-de-copias-de-seguridad)
+- [Configuración copias de seguridad](#configuración-copias-de-seguridad)
 
 # Introducción
 
