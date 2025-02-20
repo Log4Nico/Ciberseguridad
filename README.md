@@ -6,7 +6,7 @@
 ## 📖 Asignaturas
 
 ### 🕵️‍♂️ Análisis Forense
-🔗 [Análisis Forense/](Analisis%20Forense/)  
+📂 [Análisis Forense/](Analisis%20Forense/)  
 
 ### 🔐 Bastionado de Redes y Sistemas
 📂 [Bastionado de Redes y Sistemas/](Bastionado%20de%20Redes%20y%20Sistemas/)  
