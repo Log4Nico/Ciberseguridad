@@ -6,4 +6,4 @@
 ## 📖 Contenido
 
 ### 🕵️‍♂️ Máquinas de Pentesting
-🔗 [Máquinas de Pentesting/](Maquinas%20Pentesting/)
+📂 [Máquinas de Pentesting/](Maquinas%20Pentesting/)
