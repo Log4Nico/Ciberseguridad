@@ -47,12 +47,15 @@ Creamos una carpeta para alojar los archivos necesarios. Puedes encontrarla en [
 Los archivos que debemos crear son:
 
 **Archivo main.py (API con FastAPI)**
+
 ![alt text](img/4API_fastapi.png)
 
 **Dockerfile**
+
 ![alt text](img/5Dockerfile.png)
 
 **requirements.txt**
+
 ![alt text](img/6requirements.png)
 
 Al finalizar, la estructura de carpetas debería lucir similar a la siguiente:
@@ -75,30 +78,37 @@ docker build -t fastapi-app .
 Creamos estos últimos archivos:
 
 **deployment.yaml**
+
 ![alt text](img/9deploy.png)
 
 **service.yaml:**
+
 ![alt text](img/image.png)
 
 Al finalizar, la estructura de carpetas debería verse así:
+
 ![alt text](img/image2.png)
 
 ### Aplicación de los archivos de despliegue
 
 Ejecutamos los siguientes comandos para desplegar los recursos en Kubernetes:
+
 ![alt text](img/10aplicar_archivos.png)
 
 ### Verificación del despliegue
 
 Para asegurarnos de que las réplicas estén activas, ejecutamos:
+
 ![alt text](img/11Verificar_replicas.png)
 
 ### Creación de un contenedor Ubuntu para pruebas
 
 Lanzamos un contenedor Ubuntu para realizar pruebas:
+
 ![alt text](img/13Ubuntu_pruebas.png)
 
 Verificamos los contenedores en ejecución:
+
 ![alt text](img/12Containers.png)
 
 ### Priebas de la API
