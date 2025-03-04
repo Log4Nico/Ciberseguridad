@@ -1,0 +1,2 @@
+Pesa mucho y es muy tardado de hacer para que luego me lo echen para atrás.
+Consiste en analizar una memoria RAM dumpeada y buscar un archivo que se llama flag.txt
