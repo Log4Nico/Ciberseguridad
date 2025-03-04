@@ -34,10 +34,18 @@ Para comprobar el nombre del ordenador, podemos hacer 2 cosas:
 
 1. Ver los registros de windows y buscar *ComputerName*.
 
+```bash
+vol.py -f fichero.ram --profile=perfil hivelist
+```
+
 ![alt text](img/image-3.png)
 > Pruebo varios por si me equivoqué al elegir el perfil.
 
 2. Comprobar las variables de entorno y ver si existe un *ComputerName*.
+
+```bash
+vol.py -f fichero.ram --profile=perfil envars
+```
 
 ![alt text](img/image-4.png)
 > Paro el comando para no ensuciar de más la terminal.
@@ -48,6 +56,10 @@ Queda comprobado que el nombre del PC es **DESKTOP-01S7HH9**
 
 Para hacer esto, vamos a listar los procesos activos de la ram con un *pslist*, *psscan* o *pstree*:
 
+```bash
+vol.py -f fichero.ram --profile=perfil psscan
+```
+
 ![alt text](img/image-5.png)
 > Salen una barbaridad de procesos, y como no sabemos  el nombre, tenemos que ver proceso por proceso.
 
@@ -57,6 +69,10 @@ Hay uno que me llama la atención (ya que no me suena de nada):
 > Buscando un poco, encontré que es el nombre del proceso que tiene adobe acrobat.
 
 Perfecto, pero aparece 2 veces, y los 2 tienen un PID y PPID diferentes, cambio el escaner a un pstree:
+
+```bash
+vol.py -f fichero.ram --profile=perfil pstree
+```
 
 ![alt text](img/image-7.png)
 > Ahora si, solo aparece 1.
@@ -70,14 +86,24 @@ Por curiosidad, vamos a comprobar a qué proceso pertenece ese PPID:
 
 # 3. A través de los manejadores, identificar qué documento estaba siendo editado por el alumno durante la intervención policial.
 
-Tengo que usar el parámetro handle, esto da muchas líneas de resultado, por lo que tengo que filtrar bastante:
+Tengo que usar el parámetro *handle*, esto da muchas líneas de resultado, por lo que tengo que filtrar bastante:
+
+```bash
+vol.py -f fichero.ram --profile=perfil handles -t File
+```
 
 ![alt text](img/image-10.png)
 
 Encontramos todos estos archivos que estaban siendo editados durante la intervención policial, quitaría los archivos de la carpeta *steam*, ya que este abre muchos procesos cuando se está ejecutando.
 
+```bash
+vol.py -f fichero.ram --profile=perfil pslist
+```
+
 ![alt text](img/image-11.png)
 > Compruebo que el proceso padre estuviera activo también.
+
+El proceso padre concuerda con el programa de edición de texto *office*
 
 # 4. Buscar en el volcado de memoria pruebas que vinculen al usuario del equipo con la realización de la falsa amenaza de bomba.
 
