@@ -9,4 +9,4 @@
 📂 [Máquinas de Pentesting/](Maquinas%20Pentesting/)
 
 ### CTFs
-📂 [CTFs Nico/](CTFs%20Nico/)
+📂 [CTFs Nico/](https://github.com/SataNico04/Ciber/tree/main/Hacking%20Etico/CTFs%20Nico)
