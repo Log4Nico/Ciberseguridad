@@ -7,3 +7,6 @@
 
 ### 🕵️‍♂️ Máquinas de Pentesting
 📂 [Máquinas de Pentesting/](Maquinas%20Pentesting/)
+
+### CTFs
+📂 [CTFs Nico/](CTFs%20Nico/)
