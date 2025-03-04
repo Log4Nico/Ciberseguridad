@@ -1,6 +1,6 @@
 # Toma de datos
 
-Este documento sirve para recoger como se obtuvieron los datos necesarios para la elavoración del incidentes.
+Este documento sirve para recoger como se obtuvieron los datos necesarios para la elaboración del informe.
 
 # 0. Previo a las preguntas
 
@@ -9,7 +9,7 @@ Lo primero que tenemos que hacer antes de empezar a analizar la memoria RAM es c
 ![alt text](img/image.png)
 > Todos coinciden.
 
-Ahora, debemos comprobar cual es el perfil que vamos a usar para analizar:
+Ahora, debemos comprobar cuál es el perfil que vamos a usar para analizar:
 
 ```bash
 vol.py -f fichero.ram imageinfo
@@ -18,10 +18,10 @@ vol.py -f fichero.ram imageinfo
 ![alt text](img/2perfil.png)
 > Me dan varios perfiles.
 
-Tenemos que probarlos todos hasta que uno de ellos nos de un resultado con sentido:
+Tenemos que probarlos todos hasta que uno de ellos nos dé un resultado con sentido:
 
 ![alt text](img/image-2.png)
-> Resultados erroneos e incompletos.
+> Resultados erróneos e incompletos.
 
 ![alt text](img/image-1.png)
 > Este es el correcto.
@@ -37,32 +37,32 @@ Para comprobar el nombre del ordenador, podemos hacer 2 cosas:
 ![alt text](img/image-3.png)
 > Pruebo varios por si me equivoqué al elegir el perfil.
 
-2. Comprobar las variables de entorno y veri si existe un *ComputerName*.
+2. Comprobar las variables de entorno y ver si existe un *ComputerName*.
 
 ![alt text](img/image-4.png)
 > Paro el comando para no ensuciar de más la terminal.
 
-Queda comprovado que el nombre del PC es **DESKTOP-01S7HH9**
+Queda comprobado que el nombre del PC es **DESKTOP-01S7HH9**
 
 # 2. Determinar el PID del proceso de la aplicación utilizada para visualizar documentos PDF y establecer cuál es su proceso padre.
 
-Para hacer esto, vamos a listar los procesos activos de la ram con un pslist, psscan o pstree:
+Para hacer esto, vamos a listar los procesos activos de la ram con un *pslist*, *psscan* o *pstree*:
 
 ![alt text](img/image-5.png)
-> Salen una barbaridad de procesosos, y como no sabemos  el nombre, tenemos que ver proceso por proceso.
+> Salen una barbaridad de procesos, y como no sabemos  el nombre, tenemos que ver proceso por proceso.
 
-Hay uno que me llama la atención, (no me suena de nada):
+Hay uno que me llama la atención (ya que no me suena de nada):
 
 ![alt text](img/image-6.png)
-> Buscando un poco, enocntré que es el nombre del proceso que tiene adobe acrobat.
+> Buscando un poco, encontré que es el nombre del proceso que tiene adobe acrobat.
 
-Perfecto, pero aparece 2 veces, y los 2 tienen un PID y PPID diferentes, cambió el escaner a un pstree:
+Perfecto, pero aparece 2 veces, y los 2 tienen un PID y PPID diferentes, cambio el escaner a un pstree:
 
 ![alt text](img/image-7.png)
 > Ahora si, solo aparece 1.
 
 El proceso hijo es 7376, y el proceso padre 8664.
-Por curiosidad, vamos a comprobar a que proceso pertenece ese PPID:
+Por curiosidad, vamos a comprobar a qué proceso pertenece ese PPID:
 
 ![alt text](img/image-8.png)
 ![alt text](img/image-9.png)
@@ -74,14 +74,14 @@ Tengo que usar el parámetro handle, esto da muchas líneas de resultado, por lo
 
 ![alt text](img/image-10.png)
 
-Encontramos todos estos archivos que estaban siendo editados durante la intervención policial, quitaría los archivos de la carpera steam, ya que este abre muchos procesos cuando se está ejecutando.
+Encontramos todos estos archivos que estaban siendo editados durante la intervención policial, quitaría los archivos de la carpeta *steam*, ya que este abre muchos procesos cuando se está ejecutando.
 
 ![alt text](img/image-11.png)
 > Compruebo que el proceso padre estuviera activo también.
 
 # 4. Buscar en el volcado de memoria pruebas que vinculen al usuario del equipo con la realización de la falsa amenaza de bomba.
 
-Durante el analisis, me he fijado en que Pacopepe tenía Discord instalado, por lo que podrían haber conversaciones relacionadas con la palabra *bomba*:
+Durante el análisis, me he fijado en que Pacopepe tenía Discord instalado, por lo que podrían haber conversaciones relacionadas con la palabra *bomba*:
 
 ```bash
 strings -a -t d fichero.ram | grep -i "bomba"
@@ -95,7 +95,7 @@ strings -a -t d fichero.ram | grep -i "bomba"
 ![alt text](img/image-15.png)
 > Este hombre tiene un problema con las bombas.
 
-Encontramos una conversación con un tal *marcosheredia666*. Utilizando la herramienta online [jsonformatter](https://jsonformatter.org/), consigo el siguiente [resultado](./conversacion.json), que trascrito queda así:
+Encontramos una conversación con un tal *marcosheredia666*. Utilizando la herramienta online [jsonformatter](https://jsonformatter.org/), consigo el siguiente [resultado](./conversacion.json), que, transcrito, queda así:
 
 ```txt
 marcosheredia666:
