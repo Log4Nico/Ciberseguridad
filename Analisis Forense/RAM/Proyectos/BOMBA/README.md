@@ -4,4 +4,6 @@ Este pryecto lo he dividido en 2 partes, la toma de datos que no es necesaria la
 
 ## [Toma de datos](./toma_de_datos.md)
 
-## Informe
+## [Informe](./informe.pdf)
+
+## [Anexo](./anexo.pdf)
