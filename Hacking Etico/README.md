@@ -5,8 +5,9 @@
 ---
 ## 📖 Contenido
 
-### 🕵️‍♂️ Máquinas de Pentesting
-📂 [Máquinas de Pentesting/](Maquinas%20Pentesting/)
+### 🌐 [Pentesting Web](./Pentesting%20Web/)
+
+### 🕵️‍♂️ [Máquinas de Pentesting de Sistemas](Maquinas%20Pentesting/)
 
 ### CTFs
-📂 [CTFs Nico/](https://github.com/SataNico04/Ciber/tree/main/Hacking%20Etico/CTFs%20Nico)
+📂 [CTFs Nico/](https://github.com/SataNico04/Ciberseguridad/tree/main/Hacking%20Etico/CTFs%20Nico)
