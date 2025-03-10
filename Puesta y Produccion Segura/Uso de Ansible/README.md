@@ -1,4 +1,4 @@
-# *Uso *de *Ansibl*, y como ejecutar comandos de manera remota.
+# Uso de Ansible, y como ejecutar comandos de manera remota.
 
 Una vez terminado el proyecto de [vagrant](../Despliegue%20con%20vagrant/) con el que hemos desplegado 10 máquinas virtuales Debian en Virtualbox. El siguiente paso es usar *Ansible* para ejecutar comandos de manera remota en estos contenedores. En esta documentación se explicará como usar ansible para instalar *apache* y *vsftpd*, y como ejecutar comandos de manera remota.
 
