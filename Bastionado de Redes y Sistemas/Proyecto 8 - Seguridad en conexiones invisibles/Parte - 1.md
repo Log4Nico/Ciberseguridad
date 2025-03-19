@@ -37,6 +37,8 @@ Innecesarios es bastante relativo, ya que, depende de la empresa, puede usar alg
 
 En esta parte, vamos a ver y tratar todas las secciones y pestañas que podamos encontrar en el router.
 
+### General
+
 **1. Mapa de la red**
 
 ![alt text](image-5.png)
@@ -101,4 +103,95 @@ Vamos a desactivar los dispositivos USB en el siguiente punto.
 
 ![alt text](image-17.png)
 
-Desactivamos el *Cloud Disk* y el *Smart Access*
+Desactivamos el *Cloud Disk* y el *Smart Access*, ya que, en caso que tengan un NAS en la empresa, se compartirá a través de IP no desde el router.
+
+### Configuración avanzada
+
+**1. Wireless**
+
+![alt text](image-18.png)
+
+Si fuera necesario tener el Wifi activado, tendriamos que poner la autenticación WPA2 Enterprise
+
+Y en la pestaña de configuración de RADIUS, especificar la IP de este y su clave simétrica:
+
+![alt text](image-19.png)
+
+**2. LAN**
+
+Aquí podemos cambiar muchas cosas:
+
+![alt text](image-20.png)
+
+La IP y máscara del Red.
+
+![alt text](image-21.png)
+
+Como se hace el asignamiento de IPs(DHCP) y el rango de este, si se desactiva, habría que añadir las IPs una a una a través de la MAC.
+
+**3. WAN**
+
+EL protocolo WAN es para tener *internet* en los equipos conectados, obviamente lo activamos.
+
+![alt text](image-22.png)
+
+**4. Alexa & IFTTT**
+
+**¡¡NO!!**
+
+**5. IPv6**
+
+No está tan estandarizado aún como para activarlo.
+
+![alt text](image-23.png)
+
+**6. VPN**
+
+Si tuvieran trabajadores en *home office*, podríamos activar el servicio VPN:
+
+![alt text](image-24.png)
+
+**7. Firewall**
+
+![alt text](image-25.png)
+
+El firewall sirve para bloquear paquetes que vengan y vayan a cualquier dirección y a cualquier puerto.
+
+Por lo que veo, no podemos rechazar peticiones que vengan desde fuera, solo podemos hacer el redireccionamiento de puertos, el cual solo se recomienda si tenemos un servidor VPN en local.
+
+![alt text](image-27.png)
+> Ejemplo de redireccionamiento
+
+Tamién podemos bloquear URLs específicas:
+
+![alt text](image-28.png)
+
+**8. Administration**
+
+En esta sección podremos modificar aspectod como la autenticidad para acceder al router, actualizar el firmware y crear/guardar/cargar copias de seguridad:
+
+![alt text](image-29.png)
+
+![alt text](image-30.png)
+
+![alt text](image-31.png)
+> Para este último, tendremos que activar el USB para guardarlos en él.
+
+**9. System Log**
+
+![alt text](image-32.png)
+
+En esta sección, veremos varias pestañas donde pondremos ver logs del router de diferente indole:
+
+![alt text](image-33.png)
+
+![alt text](image-34.png)
+
+**10. Network Tools**
+
+No aplica en esta documentación.
+
+## Conclusión
+
+De esta forma, habríamos acabado con el bastionado al router de ASUS.
+Evidentemente, lo he configurado de la forma que yo creo correcto, cada organización es un mundo y muchas opciones que yo he desactivado, pueden ser útiles o necesarias en la empresa, lo suyo es ir comparando las necesidades con esta guía.
