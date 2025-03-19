@@ -50,7 +50,7 @@ Además de poder cambiar configuraciones de seguridad del wifi:
 
 ![alt text](image-8.png)
 
-Podemos cambiar el nombre de la red(SSID), el modo de autenticación, encriptación y contraseña del wifi.
+Podemos cambiar el nombre de la red(SSID), el modo de autenticación, encriptación y contraseña del wifi. En modo de autenticación, podemos poner WPA empresarial y crear usuarios.
 
 **2. AiMesh**
 
@@ -60,4 +60,45 @@ El AiMesh sirve para conectar varios routers y crear una red Wifi en malla para 
 
 **3. Red para invitados**
 
-Esta red está aparte de la red de la empresa, por lo que no es peligroso dejarlo habilitado, lo que sí, podría ocasionar problemas de rendimiento en el router. Podemos desactivarlo
+Esta red está aparte de la red de la empresa, por lo que no es peligroso dejarlo habilitado, lo que sí, podría ocasionar problemas de rendimiento en el router. Podemos desactivarlo en el siguiente panel:
+
+![alt text](image-10.png)
+> Por defecto viene desactivado.
+
+**4. AiProtection**
+
+Supervisa en tiempo real la red para detectar malwares e intrusiones antes de que alcancen los dispositivos críticos. Tenemos 2 apartados:
+
+![alt text](image-13.png)
+
+**4.1. Protección de red**
+
+![alt text](image-14.png)
+
+Recomiendo dejarlo activado ya que proporciona protección a los equipos de la red. 
+
+**4.2. Control paterno**
+
+![alt text](image-15.png)
+
+Sinceramente lo desactivaría, no bloquea contenido malicioso solo adulto. Esto no es realmente necesario, y además el router gasta recursos al bloquear estas páginas.
+
+**5. Adaptive QoS**
+
+Es solo un monitor de ancho de banda.
+
+**6. Traffic Analyzer**
+
+Analiza el tráfico de la red y muestra los equipos(MAC) y las aplicaciones más utilizadas.
+
+![alt text](image-16.png)
+
+**7. USB applications**
+
+Vamos a desactivar los dispositivos USB en el siguiente punto.
+
+**8. AiCloed 2.0**
+
+![alt text](image-17.png)
+
+Desactivamos el *Cloud Disk* y el *Smart Access*
