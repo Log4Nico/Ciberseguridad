@@ -5,6 +5,10 @@
 
 ![alt text](./Anexos/image.png)
 
+Calculamos la integridad de los archivos entregados y comprovamos que son correctos.
+
+---
+
 # Procesos activos y jerarquía
 
 ```bash
@@ -30,22 +34,29 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
 ## Información de interes
 
     $ grep -Ei 'bash|sh|python|php|wget|curl|nc|scp|ftp|index|tmp|nginx|apache|httpd' pslist.txt 
-    0x88003d4fd280	11	11	2	kdevtmpfs	0	0	0	0	2018-07-20 09:10:25.276000 UTC	Disabled
-    0x88003bd8c4c0	1340	1340	1	sshd	0	0	0	0	2018-07-20 09:10:37.096384 UTC	Disabled
-    0x88000348ee00	27428	27428	1	apache2	0	0	0	0	2018-07-20 10:04:02.724797 UTC	Disabled
-    0x880036fd8dc0	5573	5573	27428	apache2	33	33	33	33	2018-07-23 06:25:02.027052 UTC	Disabled
-    0x880036f91b80	5763	5763	27428	apache2	33	33	33	33	2018-07-23 06:50:13.697322 UTC	Disabled
-    0x88003c975280	6196	6196	27428	apache2	33	33	33	33	2018-07-23 10:26:46.767477 UTC	Disabled
-    0x88000348a940	6262	6262	27428	apache2	33	33	33	33	2018-07-23 10:51:35.362918 UTC	Disabled
-    0x88000348e040	6266	6266	27428	apache2	33	33	33	33	2018-07-23 10:51:54.387685 UTC	Disabled
-    0x8800366f6040	6281	6281	27428	apache2	33	33	33	33	2018-07-23 11:08:42.512891 UTC	Disabled
-    0x8800366f44c0	6285	6285	27428	apache2	33	33	33	33	2018-07-23 11:08:44.517880 UTC	Disabled
-    0x8800366f2940	6286	6286	27428	apache2	33	33	33	33	2018-07-23 11:08:44.518256 UTC	Disabled
-    0x880036f96040	6287	6287	27428	apache2	33	33	33	33	2018-07-23 11:08:44.518570 UTC	Disabled
-    0x8800366f5280	9054	9054	27428	apache2	33	33	33	33	2018-07-24 05:18:49.670230 UTC	Disabled
-    0x8800366f6e00	9055	9055	1340	sshd	0	0	0	0	2018-07-24 05:24:16.058132 UTC	Disabled
-    0x880022833700	9118	9118	9055	sshd	1000	1000	1000	1000	2018-07-24 05:24:18.705764 UTC	Disabled
-    0x880022830dc0	9126	9126	9118	bash	1000	1000	1000	1000	2018-07-24 05:24:19.275234 UTC	Disabled
+
+    0x88003d4fd280	11	    11	    2	    kdevtmpfs	0	0	0	0	2018-07-20 09:10:25.276000 UTC	Disabled
+    0x88003bd8c4c0	1340	1340	1	    sshd	    0	0	0	0	2018-07-20 09:10:37.096384 UTC	Disabled
+    0x88000348ee00	27428	27428	1	    apache2	    0	0	0	0	2018-07-20 10:04:02.724797 UTC	Disabled
+    0x880036fd8dc0	5573	5573	27428	apache2	    33	33	33	33	2018-07-23 06:25:02.027052 UTC	Disabled
+    0x880036f91b80	5763	5763	27428	apache2	    33	33	33	33	2018-07-23 06:50:13.697322 UTC	Disabled
+    0x88003c975280	6196	6196	27428	apache2	    33	33	33	33	2018-07-23 10:26:46.767477 UTC	Disabled
+    0x88000348a940	6262	6262	27428	apache2	    33	33	33	33	2018-07-23 10:51:35.362918 UTC	Disabled
+    0x88000348e040	6266	6266	27428	apache2	    33	33	33	33	2018-07-23 10:51:54.387685 UTC	Disabled
+    0x8800366f6040	6281	6281	27428	apache2	    33	33	33	33	2018-07-23 11:08:42.512891 UTC	Disabled
+    0x8800366f44c0	6285	6285	27428	apache2	    33	33	33	33	2018-07-23 11:08:44.517880 UTC	Disabled
+    0x8800366f2940	6286	6286	27428	apache2	    33	33	33	33	2018-07-23 11:08:44.518256 UTC	Disabled
+    0x880036f96040	6287	6287	27428	apache2	    33	33	33	33	2018-07-23 11:08:44.518570 UTC	Disabled
+    0x8800366f5280	9054	9054	27428	apache2	    33	33	33	33	2018-07-24 05:18:49.670230 UTC	Disabled
+    0x8800366f6e00	9055	9055	1340	sshd	    0	0	0	0	2018-07-24 05:24:16.058132 UTC	Disabled
+    0x880022833700	9118	9118	9055	sshd	    1000	1000	1000	1000	2018-07-24 05:24:18.705764 UTC	Disabled
+    0x880022830dc0	9126	9126	9118	bash	    1000	1000	1000	1000	2018-07-24 05:24:19.275234 UTC	Disabled
+
+Vemos un inicio de sesión por el usuario (UID 1000), seguido de un interprete de comandos bash, lo que indica una conexión remota al sistema.
+Los procesos de `apache2` indican que el servidor estaba siendo utilizado en ese momentos.
+El proceso `kdevtmpfs` coincide con el nombre usado comúnmente para malwares.
+
+---
 
 # Procesos lanzados por comandos
 
@@ -62,6 +73,7 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
 ## Información de interes
 
     $ grep -Ei 'bash|sh|python|php|wget|curl|nc|scp|ftp|index|tmp|nginx|apache|httpd' psaux.txt 
+
     11	2	kdevtmpfs	[kdevtmpfs]
     560	1	systemd-timesyn	/lib/systemd/systemd-timesyncd
     1340	1	sshd	/usr/sbin/sshd -D
@@ -80,6 +92,10 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
     9118	9055	sshd	sshd: ubuntu@pts/0  
     9126	9118	bash	-bash
 
+Reforzamos lo que vimos en el punto anterior.
+
+---
+
 # Historial de comandos
 
 ```bash
@@ -95,6 +111,7 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
 ## Información de interes
 
     $ grep -Ei 'wget|curl|echo|cat|rm|nano|vi|vim|/tmp|/var/www|index\.html|base64|xxd' bash.txt 
+
     9126	bash	2018-07-24 05:24:19.000000 UTC	sudo vi 000-default.conf 
     9126	bash	2018-07-24 05:24:19.000000 UTC	sudo vi ../apache2.conf 
     9126	bash	2018-07-24 05:24:19.000000 UTC	sudo vi ../ports.conf 
@@ -122,6 +139,12 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
     9126	bash	2018-07-24 05:24:19.000000 UTC	sudo vi /etc/apache2/sites-enabled/000-default-le-ssl.conf 
     9126	bash	2018-07-24 05:27:03.000000 UTC	sudo insmod ./lime-4.4.0-1061-aws.ko  "path=memoria.bin format=lime"
 
+El uso de vi y rm sobre archivos web sugiere interacción directa con el contenido de la página.
+No tiene porque ser algo malo, lo puede haber editado el administrador, pero que todos los archivos se editen al mismo segundo, es un poco raro.
+El comando insmod ./lime... indica una intención clara de realizar una captura forense de la memoria RAM.
+
+---
+
 # Archivos abiertos por procesos
 
 ```bash
@@ -137,6 +160,7 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
 ## Información de interes
 
     $ grep -Ei '/var/www|/html|index\.html|\.php|\.sh|\.py|/tmp|/dev/shm' lsof.txt 
+
     27428	27428	apache2	14	/tmp/.ZendSem.3AKgTp	202:1	51275	REG	-rw-rw-rw-	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC0
     5573	5573	apache2	14	/tmp/.ZendSem.3AKgTp	202:1	51275	REG	-rw-rw-rw-	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC0
     5763	5763	apache2	14	/tmp/.ZendSem.3AKgTp	202:1	51275	REG	-rw-rw-rw-	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC0
@@ -148,6 +172,11 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
     6286	6286	apache2	14	/tmp/.ZendSem.3AKgTp	202:1	51275	REG	-rw-rw-rw-	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC0
     6287	6287	apache2	14	/tmp/.ZendSem.3AKgTp	202:1	51275	REG	-rw-rw-rw-	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC0
     9054	9054	apache2	14	/tmp/.ZendSem.3AKgTp	202:1	51275	REG	-rw-rw-rw-	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC	2018-07-23 06:25:02.050329 UTC0
+
+Encontramos este archivo en una carpeta temporal, el cuál ha sido creado y accedido por el proceso `apache`.
+Por lo que hemos investigado, es un archivo temporal que crea `wordpress`, por lo que no tendría porque ser malicioso.
+
+---
 
 # Archivos cacheados en RAM
 
@@ -165,6 +194,8 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
 
 Nada de interes
 
+---
+
 # Sistema de archivos cacheado
 
 ```bash
@@ -180,6 +211,13 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
 ## Información de interes
 
 Nada de interes
+
+---
+
+
+# ACLARACIÓN
+
+Creo que he entendido mal lo que hacen los 2 comandos previos, porque al hacer un string de la memoria, si que me salen arhivos, o al menos las rutas más comunes(/home,/var/www,/...)
 
 # Adaptadores de red
 
@@ -205,6 +243,10 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
     4026531993	2	eth0	06:1d:7a:bb:a9:04	False	172.31.47.60	20	global	UP
     4026531993	2	eth0	06:1d:7a:bb:a9:04	False	fe80::41d:7aff:febb:a904	64	link	UP
 
+La máquina tiene un solo adaptador de red con la IP `172.31.47.60`
+
+---
+
 # Conexiones de red
 
 ```bash
@@ -223,6 +265,10 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
     4026531993	sshd	9055	9055	3	0x8800367e1680	AF_INET	STREAM	TCP	172.31.47.60	22	23.226.128.37	42760	ESTABLISHED	-
     4026531993	sshd	9118	9118	3	0x8800367e1680	AF_INET	STREAM	TCP	172.31.47.60	22	23.226.128.37	42760	ESTABLISHED	-
 
+Encontramos una conexión remota al servicio `sshd` de la máquina con el host `23.226.128.37`
+
+---
+
 # Módulos del kernel
 
 ```bash
@@ -239,6 +285,8 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
 
 Nada de interes
 
+---
+
 # Variables de entorno
 
 ```bash
@@ -254,6 +302,8 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
 ## Información de interes
 
 Nada de interes
+
+---
 
 # Código malicioso inyectado
 
@@ -281,12 +331,18 @@ python3 volatility3/vol.py -f RAM.bin --single-location=file://$(pwd)/RAM.bin li
     c7 c1 11 00 00 00 48 89 46 08 48 8d 76 08 48 83 ......H.F.H.v.H.	
     0x7f0663ff3000:	mov	eax, 0x17
 
-## Strings a la memoria
+Se ha detectado una región de memoria con permisos rwx (lectura, escritura y ejecución) dentro del proceso apache2 (PID 5573), la cual está marcada como un Anonymous Mapping, es decir, no está asociada a ningún archivo físico del sistema.
+
+
+---
+
+# Strings a la memoria
 
 Como última opción, hemos análizado el archivo de la RAM directamente y hemos encontrado lo siguiente:
 
 ---
     $ strings RAM.bin | grep 'wordpress' | grep -i 'wp-content/uploads' | grep -iE '201[0-9]' | grep -iE '.php' | grep -Ev '\(' | sort | uniq
+
     /html/wordpress/wp-content/uploads/2018/07/XLPYhlEtQOyiMKb.php
     nga.si/var/www/html/wordpress/wp-content/uploads/2018/07/XLPYhlEtQOyiMKb.php
     /var/www/html/wordpress/wp-content/uploads/2018/07/PSMOfbPom.php
@@ -295,3 +351,63 @@ Como última opción, hemos análizado el archivo de la RAM directamente y hemos
     /var/www/html/wordpress/wp-content/uploads/2018/07/yDdoSpsx.php
 
 ---
+    $ strings RAM.bin | grep -iE 'user' | grep 'UID=1000' 
+
+    Jul 20 09:10:35 ip-172-31-47-60 useradd[1111]: new user: name=ubuntu, UID=1000, GID=1000, home=/home/ubuntu, shell=/bin/bash
+    20 09:10:34 useradd[1111]: new user: name=ubuntu, UID=1000, GID=1000, home=/home/ubuntu, shell=/bin/bash
+    MESSAGE=new user: name=ubuntu, UID=1000, GID=1000, home=/home/ubuntu, shell=/bin/bash
+
+---
+    $ strings RAM.bin | grep -iE '23.226.128.37' | grep 'ssh2'
+    Jul 20 09:35:47 ip-172-31-47-60 sshd[26368]: Accepted publickey for ubuntu from 23.226.128.37 port 39256 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    Jul 24 05:24:18 ip-172-31-47-60 sshd[9055]: Accepted publickey for ubuntu from 23.226.128.37 port 42760 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    Jul 24 05:24:18 ip-172-31-47-60 sshd[9055]: Accepted publickey for ubuntu from 23.226.128.37 port 42760 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    Jul 20 09:35:47 ip-172-31-47-60 sshd[26368]: Accepted publickey for ubuntu from 23.226.128.37 port 39256 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    Jul 20 09:35:47 ip-172-31-47-60 sshd[26368]: Accepted publickey for ubuntu from 23.226.128.37 port 39256 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    Jul 20 09:35:47 ip-172-31-47-60 sshd[26368]: Accepted publickey for ubuntu from 23.226.128.37 port 39256 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    MESSAGE=Accepted publickey for ubuntu from 23.226.128.37 port 36840 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    MESSAGE=Accepted publickey for ubuntu from 23.226.128.37 port 39256 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    MESSAGE=Accepted publickey for ubuntu from 23.226.128.37 port 42760 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    Jul 20 09:16:45 ip-172-31-47-60 sshd[1859]: Accepted publickey for ubuntu from 23.226.128.37 port 36840 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    MESSAGE=Accepted publickey for ubuntu from 23.226.128.37 port 36840 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+    MESSAGE=Accepted publickey for ubuntu from 23.226.128.37 port 42760 ssh2: RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y
+
+---
+
+Con esto último, sacamos varias cosas:
+
+1. Archivos con nombres poco usuarles en el directorio ``wordpress``
+2. El usuario (UID 1000) que vimos anteriormente se trata de ``ubuntu``
+3. La conexsión remota se hizo mediante clave pública.
+
+# Cronología
+
+- 2018-07-20 09:10:25 – Se inicia el proceso kdevtmpfs (PID 11).
+
+- 2018-07-20 09:35:47 – Primera conexión SSH exitosa desde 23.226.128.37 usando clave pública RSA SHA256:Q27pW6dDYPJ8N0mBX6L8SO8OQ7LVSdNdm1xxzyBT23Y.
+
+- 2018-07-23 06:25:02 – Se lanza uno de los procesos apache2 (PID 5573). Todos los procesos Apache comienzan a acceder al archivo temporal /tmp/.ZendSem.3AKgTp.
+
+- 2018-07-24 05:24:16 – Se inicia un nuevo proceso sshd (PID 9055), aceptando conexión desde 23.226.128.37.
+
+- 2018-07-24 05:24:18 – El usuario ubuntu (UID 1000) inicia sesión remotamente desde esa IP mediante clave pública previamente aceptada.
+
+- 2018-07-24 05:24:19 – Se lanza el intérprete de comandos bash (PID 9126), lo que confirma sesión interactiva activa.
+
+- 2018-07-24 05:24:19 – Se realizan múltiples modificaciones del sistema a través del bash:
+
+    - Edición de archivos de configuración de Apache: 000-default.conf, apache2.conf, ports.conf, 000-default-le-ssl.conf.
+
+    - Eliminación de index.html.
+
+    - Ejecución de comandos para emitir certificados TLS para el dominio ganga.site usando Let's Encrypt.
+
+    - Repetidos reinicios del servicio Apache.
+
+    - Cambios al directorio web /var/www/html.
+
+    - Búsquedas relacionadas con el formateo de logs.
+
+- 2018-07-24 05:24:19 – Se inspecciona la configuración de Apache (grep -i Logformat).
+
+- 2018-07-24 05:27:03 – La herramienta forense LIME se ejecuta para capturar la memoria RAM.
