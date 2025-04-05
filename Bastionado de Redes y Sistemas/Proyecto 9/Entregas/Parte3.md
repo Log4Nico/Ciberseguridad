@@ -4,7 +4,7 @@ En esta última parte voy a analizar en detalle el certificado que generé anter
 
 Al importarlo directamente (usando su URL pública), obtengo el siguiente resultado:
 
-![alt text](../img/image/image-16.png)
+![alt text](../img/image-16.png)
 
 Una **A**, sobresaliente en validez, pero *¿por qué?* Pues se debe a lo siguiente:
 
@@ -50,26 +50,26 @@ A continuación, analizo tres páginas que presentan errores de certificado y ex
 
 - https://expired.badssl.com/
 
-![alt text](../img/image/image-17.png)
+![alt text](../img/image-17.png)
 
 Motivo: La fecha de validez a caducado.
 
-![alt text](../img/image/image-18.png)
+![alt text](../img/image-18.png)
 
 - https://self-signed.badssl.com/
 
-![alt text](../img/image/image-19.png)
+![alt text](../img/image-19.png)
 
 Motivo: No es fiable por los sistemas actuales, puede ser porque el certificado sea inválido, no esté bien configurado o que la Autoridad Certificadora sea desconocida(o por el propio dueño de la página).
 
-![alt text](../img/image/image-22.png)
+![alt text](../img/image-22.png)
 
-![alt text](../img/image/image-23.png)
+![alt text](../img/image-23.png)
 
 - https://wrong.host.badssl.com/
 
-![alt text](../img/image/image-20.png)
+![alt text](../img/image-20.png)
 
 Motivo: El nombre del dominio no coincide con el que aparece en el certificado.
 
-![alt text](../img/image/image-21.png)
+![alt text](../img/image-21.png)

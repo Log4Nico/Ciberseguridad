@@ -7,37 +7,37 @@ Para variar un poco y probar configuraciones nuevas, montaré el servicio web ut
 
 Antes de comenzar, necesito un servidor donde realizar los pasos necesarios. Usaré el mismo servidor que cree en la [parte 1](./Parte1.md).
 
-![alt text](../img/image/image.png)
+![alt text](../img/image.png)
 
 Ahora sí, vamos con la instalación.
 
 1. Primero, actualizo los paquetes de ``yum``:
 
-![alt text](../img/image/image-1.png)
+![alt text](../img/image-1.png)
 
 2. Instalo ``nginx`` con el siguiente comando:
 
-![alt text](../img/image/image-2.png)
+![alt text](../img/image-2.png)
 
 3. Y arranco el servicio con este otro:
 
-![alt text](../img/image/image-3.png)
+![alt text](../img/image-3.png)
 
 Una vez instalado, tengo que abrir los puertos correspondientes en el ``grupo de seguridad`` de la instancia. Los grupos de seguridad funcionan como un ``firewall``: permiten o bloquean el tráfico entrante y saliente.
 
 Hago lo siguiente:
 
-![alt text](../img/image/image-4.png)
+![alt text](../img/image-4.png)
 
-![alt text](../img/image/image-5.png)
+![alt text](../img/image-5.png)
 
-![alt text](../img/image/image-6.png)
+![alt text](../img/image-6.png)
 
 Agregando estas 2 reglas, permitimos el tráfico entrante en los puertos 80 y 443.  Ahora, si accedo a la IP pública, veo lo siguiente:
 
 [http://13.48.58.168/](http://13.48.58.168/)
 
-![alt text](../img/image/image-7.png)
+![alt text](../img/image-7.png)
 
 Esto confirma que el servidor web está funcionando correctamente y que las nuevas reglas se han aplicado bien.
 
@@ -53,7 +53,7 @@ Para este apartado necesito:
 
 Para el dominio, voy a utilizar la web [No-IP](https://my.noip.com/). Simplemente le damos a crear un nuevo `Hostname`, ponemos el nombre que queramos y la `IP` a la que debe apuntar:
 
-![alt text](../img/image/image-8.png)
+![alt text](../img/image-8.png)
 
 Compruebo que funcione correctamente y continuo:
 
@@ -67,29 +67,29 @@ Para generar el certificado autofirmado, usaré ``certbot``, una herramienta que
 
 ### 1. Instalo `certbot` y las dependecias necesarias para `nginx`:
 
-![alt text](../img/image/image-9.png)
+![alt text](../img/image-9.png)
 
 ### 2. Ajusto el dominio en la configuración de `nginx`:
 
-![alt text](../img/image/image-11.png)
+![alt text](../img/image-11.png)
 
 ### 3. Ejecuto la herramienta especificando el servidor que vamos a utilizar:
 
-![alt text](../img/image/image-10.png)
+![alt text](../img/image-10.png)
 
 ### 4. Por último, compruebo como la configuración se ha creado de manera automática y la conexión segura está funcionando:
 
-![alt text](../img/image/image-12.png)
+![alt text](../img/image-12.png)
 
-![alt text](../img/image/image-13.png)
+![alt text](../img/image-13.png)
 
 ## Comparación
 
 Para la parte de la comprobación, lo voy a hacer con la web de [nintendo.es](https://www.nintendo.com/es-es/):
 
-![alt text](../img/image/image-14.png)
+![alt text](../img/image-14.png)
 
-![alt text](../img/image/image-15.png)
+![alt text](../img/image-15.png)
 
 Información a destacar es:
 
