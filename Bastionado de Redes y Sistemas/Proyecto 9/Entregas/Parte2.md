@@ -35,8 +35,6 @@ Hago lo siguiente:
 
 Agregando estas 2 reglas, permitimos el tráfico entrante en los puertos 80 y 443.  Ahora, si accedo a la IP pública, veo lo siguiente:
 
-[http://13.48.58.168/](http://13.48.58.168/)
-
 ![alt text](../img/image-7.png)
 
 Esto confirma que el servidor web está funcionando correctamente y que las nuevas reglas se han aplicado bien.
@@ -56,8 +54,6 @@ Para el dominio, voy a utilizar la web [No-IP](https://my.noip.com/). Simplement
 ![alt text](../img/image-8.png)
 
 Compruebo que funcione correctamente y continuo:
-
-[https://proyecto9bastionado.ddns.net/](https://proyecto9bastionado.ddns.net/)
 
 ![alt text](../img/image/igual.gif)
 
