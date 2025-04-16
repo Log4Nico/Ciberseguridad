@@ -1,0 +1,129 @@
+Volatility 3 Framework 2.26.1
+
+PID	PPID	COMM	ARGS
+
+1	0	systemd	/sbin/init
+2	0	kthreadd	[kthreadd]
+3	2	ksoftirqd/0	[ksoftirqd/0]
+5	2	kworker/0:0H	[kworker/0:0H]
+7	2	rcu_sched	[rcu_sched]
+8	2	rcu_bh	[rcu_bh]
+9	2	migration/0	[migration/0]
+10	2	watchdog/0	[watchdog/0]
+11	2	kdevtmpfs	[kdevtmpfs]
+12	2	netns	[netns]
+13	2	perf	[perf]
+14	2	xenwatch	[xenwatch]
+15	2	xenbus	[xenbus]
+17	2	khungtaskd	[khungtaskd]
+18	2	writeback	[writeback]
+19	2	ksmd	[ksmd]
+20	2	khugepaged	[khugepaged]
+21	2	crypto	[crypto]
+22	2	kintegrityd	[kintegrityd]
+23	2	bioset	[bioset]
+24	2	kblockd	[kblockd]
+25	2	ata_sff	[ata_sff]
+26	2	md	[md]
+27	2	devfreq_wq	[devfreq_wq]
+30	2	kswapd0	[kswapd0]
+31	2	vmstat	[vmstat]
+32	2	fsnotify_mark	[fsnotify_mark]
+33	2	ecryptfs-kthrea	[ecryptfs-kthrea]
+49	2	kthrotld	[kthrotld]
+50	2	bioset	[bioset]
+51	2	bioset	[bioset]
+52	2	bioset	[bioset]
+53	2	bioset	[bioset]
+54	2	bioset	[bioset]
+55	2	bioset	[bioset]
+56	2	bioset	[bioset]
+57	2	bioset	[bioset]
+58	2	bioset	[bioset]
+59	2	bioset	[bioset]
+60	2	bioset	[bioset]
+61	2	bioset	[bioset]
+62	2	bioset	[bioset]
+63	2	bioset	[bioset]
+64	2	bioset	[bioset]
+65	2	bioset	[bioset]
+66	2	bioset	[bioset]
+67	2	bioset	[bioset]
+68	2	bioset	[bioset]
+69	2	bioset	[bioset]
+70	2	bioset	[bioset]
+71	2	bioset	[bioset]
+72	2	bioset	[bioset]
+73	2	bioset	[bioset]
+74	2	scsi_eh_0	[scsi_eh_0]
+75	2	scsi_tmf_0	[scsi_tmf_0]
+76	2	scsi_eh_1	[scsi_eh_1]
+77	2	scsi_tmf_1	[scsi_tmf_1]
+79	2	bioset	[bioset]
+83	2	ipv6_addrconf	[ipv6_addrconf]
+96	2	deferwq	[deferwq]
+258	2	raid5wq	[raid5wq]
+290	2	bioset	[bioset]
+314	2	jbd2/xvda1-8	[jbd2/xvda1-8]
+315	2	ext4-rsv-conver	[ext4-rsv-conver]
+393	2	iscsi_eh	[iscsi_eh]
+399	2	ib_addr	[ib_addr]
+405	2	ib_mcast	[ib_mcast]
+407	2	ib_nl_sa_wq	[ib_nl_sa_wq]
+409	2	ib_cm	[ib_cm]
+410	2	iw_cm_wq	[iw_cm_wq]
+411	2	rdma_cm	[rdma_cm]
+413	1	systemd-journal	/lib/systemd/systemd-journald
+417	2	kauditd	[kauditd]
+442	1	lvmetad	/sbin/lvmetad -f
+471	1	systemd-udevd	/lib/systemd/systemd-udevd
+560	1	systemd-timesyn	/lib/systemd/systemd-timesyncd
+582	2	kworker/0:1H	[kworker/0:1H]
+991	1	dhclient	/sbin/dhclient -1 -v -pf /run/dhclient.eth0.pid -lf /var/lib/dhcp/dhclient.eth0.leases -I -df /var/lib/dhcp/dhclient6.eth0.leases eth0
+1140	1	iscsid	/sbin/iscsid
+1141	1	iscsid	/sbin/iscsid
+1148	1	dbus-daemon	/usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+1166	1	systemd-logind	/lib/systemd/systemd-logind
+1168	1	rsyslogd	/usr/sbin/rsyslogd -n
+1172	1	lxcfs	/usr/bin/lxcfs /var/lib/lxcfs/
+1177	1	cron	/usr/sbin/cron -f
+1182	1	accounts-daemon	/usr/lib/accountsservice/accounts-daemon
+1183	1	atd	/usr/sbin/atd -f
+1197	1	acpid	/usr/sbin/acpid
+1251	1	mdadm	/sbin/mdadm --monitor --pid-file /run/mdadm/monitor.pid --daemonise --scan --syslog
+1310	1	agetty	/sbin/agetty --keep-baud 115200 38400 9600 ttyS0 vt220
+1311	1	agetty	/sbin/agetty --noclear tty1 linux
+1340	1	sshd	/usr/sbin/sshd -D
+1506	2	loop0	[loop0]
+1757	2	loop1	[loop1]
+1817	1	amazon-ssm-agen	/snap/amazon-ssm-agent/295/amazon-ssm-agent
+16817	2	xfsalloc	[xfsalloc]
+16818	2	xfs_mru_cache	[xfs_mru_cache]
+16956	1	polkitd	/usr/lib/policykit-1/polkitd --no-debug
+27428	1	apache2	/usr/sbin/apache2 -k start
+28097	2	loop2	[loop2]
+28103	2	kworker/u30:2	[kworker/u30:2]
+28115	1	snapd	/usr/lib/snapd/snapd
+1811	2	kworker/0:1	[kworker/0:1]
+5573	27428	apache2	/usr/sbin/apache2 -k start
+5763	27428	apache2	/usr/sbin/apache2 -k start
+6196	27428	apache2	/usr/sbin/apache2 -k start
+6262	27428	apache2	/usr/sbin/apache2 -k start
+6266	27428	apache2	/usr/sbin/apache2 -k start
+6281	27428	apache2	/usr/sbin/apache2 -k start
+6285	27428	apache2	/usr/sbin/apache2 -k start
+6286	27428	apache2	/usr/sbin/apache2 -k start
+6287	27428	apache2	/usr/sbin/apache2 -k start
+8254	2	kworker/0:0	[kworker/0:0]
+8520	2	kworker/u30:0	[kworker/u30:0]
+9054	27428	apache2	/usr/sbin/apache2 -k start
+9055	1340	sshd	sshd: ubuntu [priv] 
+9057	1	systemd	/lib/systemd/systemd --user
+9059	2	kworker/0:2	[kworker/0:2]
+9060	9057	(sd-pam)	(sd-pam)  
+9063	2	kworker/0:3	[kworker/0:3]
+9118	9055	sshd	sshd: ubuntu@pts/0  
+9126	9118	bash	-bash
+14077	2	kworker/u30:1	[kworker/u30:1]
+14088	9126	sudo	sudo insmod ./lime-4.4.0-1061-aws.ko path=memoria.bin format=lime
+14089	14088	insmod	insmod ./lime-4.4.0-1061-aws.ko path=memoria.bin format=lime
