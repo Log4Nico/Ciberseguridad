@@ -15,10 +15,10 @@ SIEM
 
 ## 4. [Configuración de Squid](Squid/Squid.md)
 
-Antivirus(?)
+Monitorear tráfico https(proxy)
 
 ## 5. [Configuración de SquidGuard](SquidGuard/SquidGuard.md)
 
-Antivirus(?)
+Antivirus
 
 Y ya **:)**
