@@ -20,4 +20,8 @@
 
 ### [Wazuh](Wazuh)
 
+<<<<<<< HEAD
 ### [Firewall Last Gen](Firewall%20Last%20Gen)
+=======
+### [Firewall Last Gen](Firewall%20Last%20Gen)
+>>>>>>> 4b018cbccd0248963b000b9decb006a3358cc9d0
