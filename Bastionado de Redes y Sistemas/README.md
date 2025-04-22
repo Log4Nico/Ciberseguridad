@@ -16,7 +16,6 @@
 
 ### 🗄️ [Proyecto 7 - Bacula](Proyecto%207%20-%20Bacula/)
 
-
 ## 📋 Información
 
 ### [Wazuh](Wazuh)
