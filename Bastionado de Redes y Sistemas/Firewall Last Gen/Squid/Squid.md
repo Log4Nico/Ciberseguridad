@@ -55,4 +55,20 @@ POr último, modificamos estas pijadas para los logs:
 
 ![alt text](img/image-10.png)
 
-En la pestaña `ACLs`,
+En la pestaña `ACLs`, podemos elegir quienes pueden usar el proxy.
+
+![alt text](img/image-11.png)
+
+En `Traffic Mgmt` configuramos cosas como el tamaño máximo de descarga o subida.
+
+![alt text](img/image-12.png)
+
+Por último, en `Real Time` y en `Status` podemos ver el estado real del proxy:
+
+![alt text](img/image-13.png)
+
+## Chequeo de Tráfico con Antivirus
+
+En la pestaña de `Antivirus` activamos `Enable AV` para activar el antivirus de _Squid_. `Client Forward Options` sirve para enviar la IP y el nombre del usuario al antivirus. En `Scan Type` dejamos `All` para que analice todo el tráfico de la aplicaciones web. `Exclude Audio/Video Streams` sirve para **NO** analizar el tráfico de videos o sonidos
+
+![alt text](img/image-14.png)
