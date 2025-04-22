@@ -15,3 +15,9 @@
 ### 📊 [Proyecto 6 - Un dashboard imprescindible en el SOC](Proyecto%206%20-%20Un%20dashboard%20imprescindible%20en%20el%20SOC/README.pdf)
 
 ### 🗄️ [Proyecto 7 - Bacula](Proyecto%207%20-%20Bacula/)
+
+## 📋 Información
+
+### [Wazuh](Wazuh)
+
+### [Firewall Last Gen](Firewall%20Last%20Gen)
