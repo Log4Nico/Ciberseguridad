@@ -1,100 +1,137 @@
-provider "virtualbox" {
-
+# Crear el proyecto GNS3
+resource "gns3_project" "network_project" {
+  name = var.project_name
 }
 
-# Sección de las redes.
-# Vamos a crear 3 redes
-
-# Red 1 10.10.10.0/24
-resource "virtualbox_hostonly" "red_10" {
-  name       = "red10"
-  ip_address = "10.10.10.1"
-  netmask    = "255.255.255.0"
+# Crear NAT1 (nodo cloud)
+resource "gns3_cloud" "nat1" {
+  project_id = gns3_project.network_project.id
+  name       = "NAT1"
+  x          = var.node_positions.nat.x
+  y          = var.node_positions.nat.y
 }
 
-# Red 2 10.10.20.0/24
-resource "virtualbox_hostonly" "red_20" {
-  name       = "red20"
-  ip_address = "10.10.20.1"
-  netmask    = "255.255.255.0"
+# Obtener ID del template de pfSense
+data "gns3_template_id" "pfsense_template" {
+  name = var.pfsense_template
 }
 
-# Red 3 10.10.30.0/24
-resource "virtualbox_hostonly" "red_30" {
-  name       = "red30"
-  ip_address = "10.10.30.1"
-  netmask    = "255.255.255.0"
+# Crear firewall pfSense
+resource "gns3_template" "pfsense" {
+  project_id  = gns3_project.network_project.id
+  template_id = data.gns3_template_id.pfsense_template.id
+  name        = "pfSense-2.7.0-1"
+  compute_id  = "local"
+  x           = var.node_positions.pfsense.x
+  y           = var.node_positions.pfsense.y
 }
 
-# Sección de las redes.
-# PC1 - red1 + NAT 
-resource "virtualbox_vm" "pc1" {
-  name   = "pc1"
-  image  = "ubuntu.box" 
-
-  network_adapter {
-    type           = "hostonly"
-    host_interface = virtualbox_hostonly.red_10.name
-  }
-
-  network_adapter {
-    type = "nat"
-  }
+# Crear Switch1
+resource "gns3_switch" "switch1" {
+  project_id = gns3_project.network_project.id
+  name       = "Switch1"
+  x          = var.node_positions.switch.x
+  y          = var.node_positions.switch.y
 }
 
-# PC2 - red1 y red2
-resource "virtualbox_vm" "pc2" {
-  name  = "pc2"
-  memory = var.vm_memory
-  cpus   = var.vm_cpus
-
-  network_adapter {
-    type           = "hostonly"
-    host_interface = virtualbox_hostonly.red_10.name
-  }
-
-  network_adapter {
-    type           = "hostonly"
-    host_interface = virtualbox_hostonly.red_20.name
-  }
+# Obtener ID del template para PCs
+data "gns3_template_id" "pc_template" {
+  name = var.pc_template
 }
 
-# PC3 - red2
-resource "virtualbox_vm" "pc3" {
-  name  = "pc3"
-  memory = var.vm_memory
-  cpus   = var.vm_cpus
-
-  network_adapter {
-    type           = "hostonly"
-    host_interface = virtualbox_hostonly.red_20.name
-  }
+# Crear Admin PC
+resource "gns3_template" "admin" {
+  project_id  = gns3_project.network_project.id
+  template_id = data.gns3_template_id.pc_template.id
+  name        = "Admin"
+  compute_id  = "local"
+  x           = var.node_positions.admin.x
+  y           = var.node_positions.admin.y
 }
 
-# PC4 - red1 y red3
-resource "virtualbox_vm" "pc4" {
-  name  = "pc4"
-  memory = var.vm_memory cpus   = var.vm_cpus
-
-  network_adapter {
-    type           = "hostonly"
-    host_interface = virtualbox_hostonly.red_10.name
-  }
-
-  network_adapter {
-    type           = "hostonly"
-    host_interface = virtualbox_hostonly.red_30.name
-  }
+# Crear PC1
+resource "gns3_template" "pc1" {
+  project_id  = gns3_project.network_project.id
+  template_id = data.gns3_template_id.pc_template.id
+  name        = "PC1"
+  compute_id  = "local"
+  x           = var.node_positions.pc1.x
+  y           = var.node_positions.pc1.y
 }
 
-# PC5 - red3
-resource "virtualbox_vm" "pc5" {
-  name  = "pc5"
-  memory = var.vm_memory
-  cpus   = var.vm_cpus
+# Crear PC2
+resource "gns3_template" "pc2" {
+  project_id  = gns3_project.network_project.id
+  template_id = data.gns3_template_id.pc_template.id
+  name        = "PC2"
+  compute_id  = "local"
+  x           = var.node_positions.pc2.x
+  y           = var.node_positions.pc2.y
+}
 
-  network_adapter {
-    type           = "hostonly"
-    host_interface = virtualbox_hostonly.red_30.name
-  }
+# Conexión entre NAT1 y pfSense
+resource "gns3_link" "nat_to_pfsense" {
+  project_id     = gns3_project.network_project.id
+  node_a_id      = gns3_cloud.nat1.id
+  node_a_adapter = 0
+  node_a_port    = 0
+  node_b_id      = gns3_template.pfsense.id
+  node_b_adapter = 0
+  node_b_port    = 0
+}
+
+# Conexión entre pfSense y Switch1
+resource "gns3_link" "pfsense_to_switch" {
+  project_id     = gns3_project.network_project.id
+  node_a_id      = gns3_template.pfsense.id
+  node_a_adapter = 1
+  node_a_port    = 0
+  node_b_id      = gns3_switch.switch1.id
+  node_b_adapter = 0
+  node_b_port    = 0
+}
+
+# Conexión entre Switch1 y Admin
+resource "gns3_link" "switch_to_admin" {
+  project_id     = gns3_project.network_project.id
+  node_a_id      = gns3_switch.switch1.id
+  node_a_adapter = 0
+  node_a_port    = 1
+  node_b_id      = gns3_template.admin.id
+  node_b_adapter = 0
+  node_b_port    = 0
+}
+
+# Conexión entre Switch1 y PC1
+resource "gns3_link" "switch_to_pc1" {
+  project_id     = gns3_project.network_project.id
+  node_a_id      = gns3_switch.switch1.id
+  node_a_adapter = 0
+  node_a_port    = 2
+  node_b_id      = gns3_template.pc1.id
+  node_b_adapter = 0
+  node_b_port    = 0
+}
+
+# Conexión entre Switch1 y PC2
+resource "gns3_link" "switch_to_pc2" {
+  project_id     = gns3_project.network_project.id
+  node_a_id      = gns3_switch.switch1.id
+  node_a_adapter = 0
+  node_a_port    = 3
+  node_b_id      = gns3_template.pc2.id
+  node_b_adapter = 0
+  node_b_port    = 0
+}
+
+# Iniciar todos los nodos después de la creación
+resource "gns3_start_all" "start_project" {
+  project_id = gns3_project.network_project.id
+  depends_on = [
+    gns3_link.nat_to_pfsense,
+    gns3_link.pfsense_to_switch,
+    gns3_link.switch_to_admin,
+    gns3_link.switch_to_pc1,
+    gns3_link.switch_to_pc2
+  ]
 }

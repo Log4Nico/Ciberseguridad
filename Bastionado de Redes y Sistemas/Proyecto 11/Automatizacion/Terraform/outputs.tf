@@ -1,31 +1,24 @@
-output "red_10_interface" {
-  value = virtualbox_hostonly.red_10.name
+output "project_id" {
+  description = "ID del proyecto GNS3 creado"
+  value       = gns3_project.network_project.id
 }
 
-output "red_20_interface" {
-  value = virtualbox_hostonly.red_20.name
+output "project_name" {
+  description = "Nombre del proyecto GNS3 creado"
+  value       = gns3_project.network_project.name
 }
 
-output "red_30_interface" {
-  value = virtualbox_hostonly.red_30.name
+output "nat1_id" {
+  description = "ID del nodo NAT1"
+  value       = gns3_cloud.nat1.id
 }
 
-output "pc1_name" {
-  value = virtualbox_vm.pc1.name
+output "pfsense_id" {
+  description = "ID del firewall pfSense"
+  value       = gns3_template.pfsense.id
 }
 
-output "pc2_name" {
-  value = virtualbox_vm.pc2.name
-}
-
-output "pc3_name" {
-  value = virtualbox_vm.pc3.name
-}
-
-output "pc4_name" {
-  value = virtualbox_vm.pc4.name
-}
-
-output "pc5_name" {
-  value = virtualbox_vm.pc5.name
+output "switch1_id" {
+  description = "ID del Switch1"
+  value       = gns3_switch.switch1.id
 }
