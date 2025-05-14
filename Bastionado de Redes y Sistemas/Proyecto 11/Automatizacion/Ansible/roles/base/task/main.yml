@@ -13,7 +13,7 @@
     state: present
     update_cache: yes
 
-- name: Habilitar IP forwarding (si aplica)
+- name: Habilitar IP forwarding
   sysctl:
     name: net.ipv4.ip_forward
     value: '1'

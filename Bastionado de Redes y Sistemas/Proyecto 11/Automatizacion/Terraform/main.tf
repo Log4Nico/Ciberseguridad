@@ -1,82 +1,100 @@
 provider "virtualbox" {
-  version = "0.2.2"
+
 }
 
-locals {
-  pcs = [
-    {
-      name   = "pc1"
-      ip1    = "192.168.68.110"
-      ip2    = "10.10.10.128"
-      nics   = [0, 1]
-    },
-    {
-      name   = "pc2"
-      ip1    = "10.10.10.129"
-      ip2    = "10.10.20.135"
-      nics   = [1, 2]
-    },
-    {
-      name   = "pc3"
-      ip1    = "10.10.20.136"
-      ip2    = null
-      nics   = [2]
-    },
-    {
-      name   = "pc4"
-      ip1    = "10.10.10.130"
-      ip2    = "10.10.30.140"
-      nics   = [1, 3]
-    },
-    {
-      name   = "pc5"
-      ip1    = "10.10.30.141"
-      ip2    = null
-      nics   = [3]
-    }
-  ]
+# Sección de las redes.
+# Vamos a crear 3 redes
+
+# Red 1 10.10.10.0/24
+resource "virtualbox_hostonly" "red_10" {
+  name       = "red10"
+  ip_address = "10.10.10.1"
+  netmask    = "255.255.255.0"
 }
 
-resource "virtualbox_vm" "pc" {
-  count = length(local.pcs)
+# Red 2 10.10.20.0/24
+resource "virtualbox_hostonly" "red_20" {
+  name       = "red20"
+  ip_address = "10.10.20.1"
+  netmask    = "255.255.255.0"
+}
 
-  name      = local.pcs[count.index].name
-  image     = "${path.module}/ubuntu-cloud.vdi"
-  cpus      = 1
-  memory    = "1024 mib"
+# Red 3 10.10.30.0/24
+resource "virtualbox_hostonly" "red_30" {
+  name       = "red30"
+  ip_address = "10.10.30.1"
+  netmask    = "255.255.255.0"
+}
+
+# Sección de las redes.
+# PC1 - red1 + NAT 
+resource "virtualbox_vm" "pc1" {
+  name   = "pc1"
+  image  = "ubuntu.box" 
 
   network_adapter {
     type           = "hostonly"
-    host_interface = "vboxnet${local.pcs[count.index].nics[0]}"
+    host_interface = virtualbox_hostonly.red_10.name
   }
 
-  dynamic "network_adapter" {
-    for_each = local.pcs[count.index].nics[1] != null ? [1] : []
-    content {
-      type           = "hostonly"
-      host_interface = "vboxnet${local.pcs[count.index].nics[1]}"
-    }
+  network_adapter {
+    type = "nat"
+  }
+}
+
+# PC2 - red1 y red2
+resource "virtualbox_vm" "pc2" {
+  name  = "pc2"
+  memory = var.vm_memory
+  cpus   = var.vm_cpus
+
+  network_adapter {
+    type           = "hostonly"
+    host_interface = virtualbox_hostonly.red_10.name
   }
 
-  ssh_username = "ubuntu"
-  ssh_private_key = file("${path.module}/id_rsa")
+  network_adapter {
+    type           = "hostonly"
+    host_interface = virtualbox_hostonly.red_20.name
+  }
+}
 
-  provisioner "remote-exec" {
-    inline = [
-      "echo 'Configurando IPs estáticas...'",
-      "sudo bash /tmp/setup-net.sh"
-    ]
+# PC3 - red2
+resource "virtualbox_vm" "pc3" {
+  name  = "pc3"
+  memory = var.vm_memory
+  cpus   = var.vm_cpus
 
-    connection {
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("${path.module}/id_rsa")
-      host        = local.pcs[count.index].ip1
-    }
+  network_adapter {
+    type           = "hostonly"
+    host_interface = virtualbox_hostonly.red_20.name
+  }
+}
+
+# PC4 - red1 y red3
+resource "virtualbox_vm" "pc4" {
+  name  = "pc4"
+  memory = var.vm_memory cpus   = var.vm_cpus
+
+  network_adapter {
+    type           = "hostonly"
+    host_interface = virtualbox_hostonly.red_10.name
   }
 
-  provisioner "file" {
-    source      = "${path.module}/scripts/setup-net.sh"
-    destination = "/tmp/setup-net.sh"
+  network_adapter {
+    type           = "hostonly"
+    host_interface = virtualbox_hostonly.red_30.name
+  }
+}
+
+# PC5 - red3
+resource "virtualbox_vm" "pc5" {
+  name  = "pc5"
+  memory = var.vm_memory
+  cpus   = var.vm_cpus
+
+  network_adapter {
+    type           = "hostonly"
+    host_interface = virtualbox_hostonly.red_30.name
   }
 }
