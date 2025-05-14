@@ -1,0 +1,10 @@
+name: comprobar
+title: InSpec Profile
+maintainer: Nicolás
+copyright: Nicolás
+copyright_email: nruirui214@g.educaand.es
+license: Apache-2.0
+summary: An Inspec Compliance Profile
+version: 0.1.0
+supports:
+  platform: ubuntu

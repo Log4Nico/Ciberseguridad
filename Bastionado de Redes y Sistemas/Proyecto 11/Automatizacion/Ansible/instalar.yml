@@ -1,0 +1,11 @@
+---
+- hosts: servidores
+  become: yes
+  tasks:
+    - name: Instalar net-tools e iproute2
+      apt:
+        name:
+          - net-tools
+          - iproute2
+        state: present
+        update_cache: yes
