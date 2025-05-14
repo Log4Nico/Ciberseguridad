@@ -1,0 +1,6 @@
+---
+- name: Configuración básica del equipo
+  hosts: clientes
+  become: yes
+  roles:
+    - base

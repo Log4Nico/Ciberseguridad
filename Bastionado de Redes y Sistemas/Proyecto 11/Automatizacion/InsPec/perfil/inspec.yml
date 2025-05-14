@@ -1,0 +1,8 @@
+name: perfil
+title: Comprobaciones básicas
+maintainer: Nicolás Ruiz Ruiz
+license: MIT
+summary: Perfil de validación de configuración Ansible
+version: 0.1.0
+supports:
+  - os-family: debian
