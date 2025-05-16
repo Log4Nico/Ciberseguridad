@@ -1,6 +1,6 @@
 # Escenario
 
-![alt text](image.png)
+![alt text](img/image.png)
 
 [Ejercicio 2 David](https://cuddly-disco-plg1r3k.pages.github.io/resources/ejercicios-prueba2-vlan/2.html)
 
@@ -56,7 +56,7 @@ En el router tenemos que asignarle las IPs en las subinterfaces y crear las pool
 
 Primero que nada, debemos "encender" la interfaz del router(no sé que hace este comando pero así se quita el triángulo rojo de la interfaz):
 
-![alt text](image-1.png)
+![alt text](img/image-1.png)
 
 ```
 enable
@@ -99,7 +99,7 @@ Para ver las IPs de las interfaces podemos poner:
 show ip interface brief
 ```
 
-![alt text](image-2.png)
+![alt text](img/image-2.png)
 
 ## Crear pools de IPs
 
@@ -141,7 +141,7 @@ Por último si queremos ver las pools creadas, debemos poner:
 show ip dhcp pool
 ```
 
-![alt text](image-4.png)
+![alt text](img/image-4.png)
 
 Y ya habríamos acabado la configuración del router, pasemos al switch central.
 
@@ -192,7 +192,7 @@ Por último antes de pasar a los switch *de acceso*, veamos las vlans con:
 show vlan
 ```
 
-![alt text](image-5.png)
+![alt text](img/image-5.png)
 
 # Configuración switchs de acceso
 
@@ -202,7 +202,7 @@ En estos switchs tenemos que volver a crear las vlans, poner algunas interfaces 
 
 Ahora no tenemos porque crear 3 VLANs en cada switch, es decir:
 
-![alt text](image-6.png)
+![alt text](img/image-6.png)
 
 Como podemos ver, cada switch está conectado a 2 equipos de dos redes diferentes, por lo que solo debemos crear 2 VLANs por switch, y lo haré siguiendo esta metodología:
 
@@ -281,17 +281,17 @@ switchport access Vlan 50
 
 Poner los PC en DHCP. Se hace de la siguiente manera:
 
-![alt text](image-7.png)
+![alt text](img/image-7.png)
 
-![alt text](image-8.png)
+![alt text](img/image-8.png)
 
-![alt text](image-9.png)
+![alt text](img/image-9.png)
 
-![alt text](image-10.png)
+![alt text](img/image-10.png)
 
 En esta última foto vemos como se asigna una IP automáticamente. Y para poder comprobar los resultados, tenemos que esperar un poco a que todo se enrute correctamente. Cuando creamos que ha paso el tiempo suficiente le damos a la **P** y empezamos a enviar paquetes de un PC a otros, todos deberían dar ping.
 
-![alt text](image-11.png)
+![alt text](img/image-11.png)
 
 Si da error, no has esperado lo suficiente, y si crees que ha pasado mucho tiempo tienes algo mal xD.
 
