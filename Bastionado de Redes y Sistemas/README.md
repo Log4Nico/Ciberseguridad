@@ -2,7 +2,7 @@
 
 ## 📂 Proyectos
 
-### [Proyecto 1](./Proyecto%201%20-%20Bastionado%20del%20arranque%20del%20sistema/)
+### [Proyecto 1 - Bastionado del arranque del sistema](./Proyecto%201%20-%20Bastionado%20del%20arranque%20del%20sistema/)
 
 ### [Proyecto 2 - La red dividida](./Proyecto%202%20-%20La%20red%20dividida/index.html)
 
