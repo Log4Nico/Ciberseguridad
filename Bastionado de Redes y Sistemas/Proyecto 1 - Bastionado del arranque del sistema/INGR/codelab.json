@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-11-05T21:23:28+01:00",
+  "id": "bastionadoarranque",
+  "duration": 0,
+  "title": "Bastionado del arranque en sistema Debian",
+  "summary": "Segunda parte del proyecto donde voy a explicar como bastionar el arranque del sistema",
+  "source": "/home/nicolas/Documentos/codelabs/Bastionado_Redes/Proyecto1/Parte2/codelab.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "bastionado",
+    "arranque",
+    "grub"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "(https://github.com/SataNico04/BRS_Bastionado_Arranque_Debian)",
+  "url": "bastionadoarranque"
+}

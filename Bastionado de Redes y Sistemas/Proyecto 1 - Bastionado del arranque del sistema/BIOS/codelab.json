@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-11-05T21:03:24+01:00",
+  "id": "bastionadobios",
+  "duration": 0,
+  "title": "Bastionado de BIOS/UEFI",
+  "summary": "Primera parte del proyecto donde voy a explicar como bastionar la BIOS",
+  "source": "/home/nicolas/Documentos/codelabs/Bastionado_Redes/Proyecto1/Parte1/codelab.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "bastionado",
+    "bios"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "(https://github.com/SataNico04/BRS_Bastionado_BIOS_Debian)",
+  "url": "bastionadobios"
+}

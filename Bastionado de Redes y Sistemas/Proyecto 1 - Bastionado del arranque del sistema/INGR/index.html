@@ -1,0 +1,113 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Bastionado del arranque en sistema Debian</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="bastionadoarranque"
+                  title="Bastionado del arranque en sistema Debian"
+                  environment="web"
+                  feedback-link="(https://github.com/SataNico04/BRS_Bastionado_Arranque_Debian)">
+    
+      <google-codelab-step label="Instalación" duration="0">
+        <p>Pasemos ahora a la segunda parte del proyecto, donde veremos como bastionar el arranque de un sistema Debian. He elegido Debian.12.7, con 4GB de RAM y 100GB de disco duro. Empecemos con la instalación desde 0, así que, montamos la imagen del sistema en un pendrive y arrancamos la máquina desde este. En la primera ventana, le damos a <strong>Install</strong>, para hacer una instalación por terminal:</p>
+<p class="image-container"><img alt="INSTALL" src="img/82c24e7d1e7e0000.png"></p>
+<p>Nos pedirá el idioma de instalación, localización y distribución de teclado, ponemos a nuestro gusto, yo lo voy a poner en español todo. Una vez hecho esto, empezaran a cargar varios componentes adicionales para la instalación:</p>
+<p class="image-container"><img alt="COMPONENTES" src="img/cf5df738de6dde94.png"></p>
+<p>Seguimos avanzando, y encontramos un apartado de clave de superusuario, OJO, lo mejor es desactivar el root porque, teniendo el comando sudo, no sirve para nada, solo para poner en riesgo el sistema en caso de ataque, sin enbargo, le ponemos una contraseña lo suficientemente segura y pasamos al siguiente punto, creación de usuario del sistema, el cual lo podemos hacer a nuestro antojo:</p>
+<p class="image-container"><img alt="USUARIO" src="img/32e4624473beebc3.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Particiones del disco" duration="0">
+        <p>Veamos ahora las particiones del disco. De normal, podemos hacer que la propia instalación cree las particiones que vea oportunas de manera automática, pero realmente, lo más seguro es crearlas una a una.</p>
+<ul>
+<li>Empecemos por la partición /boot, la cual le pondremos <strong>1GB</strong> de espacio:</li>
+</ul>
+<p class="image-container"><img alt="/BOOT" src="img/b599902141d217e8.png"></p>
+<ul>
+<li>Sigamos con la partición SWAP, o memoria de intercambio, que debe tener un tamaño aproximado del doble de la memoria RAM, hasta un máximo de 8GB, como mi sistema tiene 4GB de RAM, le pongo <strong>8GB</strong>:</li>
+</ul>
+<p class="image-container"><img alt="SWAP" src="img/f94c3af4ec13746c.png"></p>
+<ul>
+<li>La partición raíz &#34;/&#34;, a la que le vamos a poner <strong>20GB</strong>:</li>
+</ul>
+<p class="image-container"><img alt="/" src="img/3777a2b7f7b09a78.png"></p>
+<ul>
+<li>Y por último la partición /home, a la cual le vamos a asignar el resto del espacio (<strong>78.4GB</strong>):</li>
+</ul>
+<p class="image-container"><img alt="/HOME" src="img/b4d9303a1a774cd8.png"></p>
+<p>Las particiones deberían verse de la siguiente manera:</p>
+<p class="image-container"><img alt="PARTICIONES" src="img/7b960c45e8470235.png"></p>
+<p>El resto de la configuración, podemos dejarla por defecto y negando las instalaciones de terceros. De esta forma, empezará a instalarse Debian en nuestro sistema, y, cuando termine de isntalarse, nos pedirá instalar el gestor de arranque <strong>GRUB</strong>, le damos a que si, que lo instale también, y que lo haga en el disco del sistema (/dev/sda en mi caso).</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Bastionar GRUB" duration="0">
+        <p>Cuando termine la instalación le damos a reiniciar y nos cargará el GRUB instalado:</p>
+<p class="image-container"><img alt="GRUB" src="img/1e0405893041e1b2.png"></p>
+<p>Le damos a que inicie Debian e iniciamos sesión con el usuario creado. Ahora vamos a añadir unos paso más de seguridad, en los que vamos a:</p>
+<ol type="1">
+<li>Ocultar el menú de arranque.</li>
+<li>Configurar una contraseña para modificar el arranque.</li>
+<li>Crear una copia de seguridad del arranque del sistema.</li>
+</ol>
+<h2 is-upgraded>1. Ocultar el menú de arranque</h2>
+<p>Ocultar el menú de arranque significa saltarnos el menú donde elegimos que sistema iniciar:</p>
+<p class="image-container"><img alt="GRUB" src="img/1e0405893041e1b2.png"></p>
+<p>Para ello, primero tenemos que iniciar sesión con la cuenta root haciendo <strong>su - root</strong>:</p>
+<p class="image-container"><img alt="TIEMPO" src="img/77479bf55449ab76.png"></p>
+<p>Por defecto, GRUB_TIMEOUT debería estar en 5, osea, deben pasar 5 segundos para que inicie la primera opción seleccionada. Poniendo este valor en 0, nos ahorramos el menú y saltará automaticamente al sistema Debian. Hacemos un update-grub para guardar los cambios.</p>
+<h2 is-upgraded>2. Configurar una contraseña para modificar el arranque</h2>
+<p>Añadiendo una contraseña, agregamos un punto más a la seguridad de nuestro sistema, protegiendo el arranque. Vamos a crear una contraseña cifrada con el siguiente comando:</p>
+<p class="image-container"><img alt="CONTCIFR" src="img/bc0fe3eb5ff0679d.png"></p>
+<p>Ahora, para asignar esta contraseña, editamos el siguiente archivo:</p>
+<p class="image-container"><img alt="CONTRASEÑA" src="img/7c53652a5acb970d.png"></p>
+<p>El primer parametro asigna ‘root&#39; a la variable superusers, y el segundo asigna la contraseña cifrada al usuario root. Además de esto, podemos editar los permisos del archivo para que solo el root pueda moficarlo, podemos usar el comando:</p>
+<pre><code language="language-bash" class="language-bash">chmod 700 /etc/grub.d/40_custom
+</code></pre>
+<p>Actualizamos el grub y continuamos con el último punto.</p>
+<h2 is-upgraded>3. Crear una copia de seguridad del arranque del sistema</h2>
+<p>Ahora mismo, sabemos que la configuración realizada funciona perfectamente, pero en un futuro, al editarla podría dejar de hacerlo. Vamos a crear una copia de los ficheros y carpetas importantes relacionados con el arranque del sistema. Haremos uso de los siguientes comandos:</p>
+<p class="image-container"><img alt="COPIAS" src="img/7ac57e97c83ead4f.png"></p>
+<p>De esta forma, todos los archivos relacionados con el GRUB quedaran resguardados.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finalización" duration="0">
+        <p>Y ya tendríamos bastionado el arranque del sistema de un Debian, separando sus particiones, configurando el GRUB y copiando los archivos más importantes.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

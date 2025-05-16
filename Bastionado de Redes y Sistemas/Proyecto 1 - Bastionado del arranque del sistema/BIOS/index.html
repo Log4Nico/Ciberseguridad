@@ -1,0 +1,120 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Bastionado de BIOS/UEFI</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="bastionadobios"
+                  title="Bastionado de BIOS/UEFI"
+                  environment="web"
+                  feedback-link="(https://github.com/SataNico04/BRS_Bastionado_BIOS_Debian)">
+    
+      <google-codelab-step label="Acceso a la BIOS" duration="0">
+        <p>En esta primera parte de la práctica, gestionaremos una BIOS emulada en un portátil Lenovo para optimizar su seguridad.</p>
+<p class="image-container"><img alt="IMAGEN_BIOS" src="img/eb76f2acf62f240a.png"></p>
+<p>Al acceder correctamente, encontraremos las pestañas de configuración. Aunque el diseño puede variar entre equipos, suelen ser similares.</p>
+<p class="image-container"><img alt="PESTAÑAS_BIOS" src="img/477ab54a8e35b7f1.png"></p>
+<p>La pantalla de la BIOS se divide en tres secciones principales:</p>
+<ol type="1">
+<li><strong>Pestañas de navegación:</strong> las diferentes áreas de configuración.</li>
+<li><strong>Opciones de configuración:</strong> muestran información detallada de hardware, incluyendo versión, fecha, números de serie, MAC y velocidad de la CPU.</li>
+<li><strong>Comandos de teclado:</strong> atajos para navegar y modificar configuraciones.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Configuración de la BIOS" duration="0">
+        <p>A continuación, repasamos las configuraciones para mejorar la seguridad en cada pestaña.</p>
+<h2 is-upgraded>Network</h2>
+<p>En esta sección, deshabilitaremos la opción de arranque remoto para evitar que alguien encienda el portátil de manera remota:</p>
+<p class="image-container"><img alt="WAKE" src="img/94f014936607b123.png"></p>
+<p>Es recomendable dejar el resto de opciones en su configuración predeterminada.</p>
+<h2 is-upgraded>USB</h2>
+<p>Para evitar accesos no autorizados desde dispositivos externos, deshabilitaremos el arranque desde USB:</p>
+<p class="image-container"><img alt="USB" src="img/14a3ad2ee03ebdd1.png"></p>
+<p>Esto impedirá que se inicie un sistema operativo desde un dispositivo externo.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Date/Time" duration="0">
+        <p>No encontramos opciones de seguridad relevantes en esta pestaña, por lo que no es necesario realizar cambios.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Security" duration="0">
+        <p>Esta pestaña es clave para la seguridad de la BIOS. Configuraremos varias opciones críticas:</p>
+<h2 is-upgraded>Contraseñas</h2>
+<p>Accedemos a la sección de contraseñas para establecer varias protecciones importantes:</p>
+<p class="image-container"><img alt="CONTRASEÑAS" src="img/595ebca6d834829f.png"></p>
+<ol type="1">
+<li><strong>Supervisor password:</strong> crea una contraseña para restringir el acceso a la configuración de la BIOS. <strong>Nota:</strong> si olvidas esta contraseña, no podrás volver a acceder a la BIOS.</li>
+<li><strong>Lock UEFI BIOS settings:</strong> impide cambios en la BIOS. Recomendable solo si no confías en la protección de la contraseña de supervisor.</li>
+<li><strong>Password at unattended boot:</strong> obliga a introducir la contraseña después de hibernación o apagado completo, protegiendo el acceso cuando el usuario principal no está presente.</li>
+<li><strong>Password at restart:</strong> similar a la anterior, pero solo para reinicios. Útil para añadir una capa extra de seguridad.</li>
+<li><strong>Set minimum length:</strong> define la longitud mínima de contraseñas, preferentemente 10 caracteres o más.</li>
+<li><strong>Power-On password:</strong> evita el inicio del sistema por usuarios no autorizados.</li>
+<li><strong>Hard Disk1 password:</strong> restringe el acceso al disco duro. Muy importante activar.</li>
+</ol>
+<h2 is-upgraded>Anti-theft</h2>
+<p>En esta sección, habilitamos <em>Computrace</em>, que permite rastrear, bloquear, borrar y monitorear el dispositivo en caso de robo:</p>
+<p class="image-container"><img alt="ANTIRROBO" src="img/245b02610dd2004a.png"></p>
+<p>Al activarlo, el dispositivo se conecta a los servidores de <em>Absolute Software</em> para gestionar las acciones anteriores.</p>
+<h2 is-upgraded>Secure Boot</h2>
+<p><em>Secure Boot</em> impide la ejecución de software no autorizado durante el arranque del sistema:</p>
+<p class="image-container"><img alt="SECUREBOOT" src="img/f723cee42a7560aa.png"></p>
+<p>Recomendamos activar esta opción.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Startup" duration="0">
+        <p>En esta pestaña configuraremos el orden de arranque:</p>
+<ol type="1">
+<li><strong>Boot Order:</strong> ajustamos el orden de arranque, dejando solo habilitada la opción de Windows. Usaremos los atajos de teclado para configurarlo.</li>
+</ol>
+<p class="image-container"><img alt="BOOT" src="img/de691f83879468fe.png"></p>
+<ol type="1" start="2">
+<li><strong>Boot Order Lock:</strong> una vez definido el orden de arranque, lo bloquearemos para evitar modificaciones.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finalización" duration="0">
+        <p>En la pestaña de <strong>Restart</strong>, guardamos los cambios y salimos de la BIOS.</p>
+<p>Siguiendo estos pasos, habremos bastionado correctamente la BIOS para garantizar un entorno de inicio seguro y prevenido ante accesos no autorizados.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
