@@ -26,7 +26,7 @@
 
 ## 📋 Información
 
-### [Guía VLAN](Guia_Vlan_Cisco)
+### [Guía VLAN](Guia_Vlan)
 
 ### [Wazuh](Wazuh)
 
