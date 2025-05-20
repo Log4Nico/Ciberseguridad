@@ -11,7 +11,7 @@
 
 ### [Proyecto 1 - Development of a Forensic Analysis Methodology](./Proyecto%201%20-%20Development%20of%20a%20Forensic%20Analysis%20Methodology/)
 
-### [Proyecto 2.1 - Incident Investigation]
+### [Proyecto 2.1 - Incident Investigation](./Proyecto%202.1%20-%20Incident%20Investigation/)
 
 ### [Proyecto 3 - ]
 
