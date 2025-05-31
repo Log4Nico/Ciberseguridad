@@ -94,7 +94,7 @@ La instalación nos hará 2 preguntas:
 Podemos elegir **sin configuración**, para no configurar ningún correo, **sitio de internet**, si quisiéramos poner un **correo personal** o correo local si tuviéramos un servidor SMTP
 
 **Configuración de la base de datos**
-![](attachments/Pasted image 20250218164541.png)
+![](attachments/20250218164541.png)
 
 Obviamente le decimos que sí para que configure automáticamente la base de datos.
 
