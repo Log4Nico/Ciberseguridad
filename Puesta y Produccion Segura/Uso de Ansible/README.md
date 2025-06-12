@@ -82,14 +82,14 @@ Ahora vamos a instalar los servicios con el playbook.yml:
 
 De esta forma, quedarían instalado **vsftpd** y **apache** en las 5 máquinas.
 
-![alt text](img/<Comprobación instalacion.png>)
+![alt text](img/instalacion.png)
 
 ## Ejecución de comandos con Ansible
 
 Por último, vamos a usar Ansible para ejecutar código en todas las máquinas a la vez:
 
-![alt text](img/statusapache1-3.png)
-![alt text](img/statusapache2-1.png)
+![alt text](img/statusapache1.png)
+![alt text](img/statusapache2.png)
 > ansible -i hosts all -a "systemctl status apache"
 
 ![alt text](img/statusvsftpd.png)
